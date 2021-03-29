@@ -1,16 +1,16 @@
-// /src/App.js
 import React, { useEffect } from "react";
-//import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 import makePixiApp from "./Stage";
-import "./index.css";
+import "./sass/styles.scss";
+import { useWindowDimensions } from "./utils/windowDimensions";
 
 const App: React.FC = () => {
-    useEffect(() => {
-        makePixiApp();
-    }, []);
+    const { windowWidth, windowHeight } = useWindowDimensions();
 
-    return <div>Test</div>;
+    useEffect(() => {
+        makePixiApp({ width: windowWidth, height: windowHeight });
+    }, [windowWidth, windowHeight]);
+
+    return <div className="test-styles">Test</div>;
 };
 
 export default App;
